@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\interactions;
+use SebastianBergmann\CodeCoverage\Report\Xml\Method;
+
 class InteractionController extends Controller
 {
     /**
@@ -16,7 +18,7 @@ class InteractionController extends Controller
         //
         $intercations = interactions::all();
 foreach($intercations as $interaction)
-{ $interaction-> view_interaction =
+{ $interaction->view_interaction =
 [
 'href'=>'api/v1/interaction/' . $interaction->id,
 'method'=> 'GET'
@@ -25,7 +27,7 @@ foreach($intercations as $interaction)
 }
 $response =[
     'msg'=>'Daftar Interaksi Tamu',
-    'interaction' => $interaction
+    'interactions' => $intercations
 ];
 return response()->json($response, 200);
     }
@@ -54,16 +56,46 @@ return response()->json($response, 200);
             'NIK'=>'required',
             'Nama'=>'required',
         ]);
-$title=$request->input('title');
-$title=$request->input('NIK');
-$title=$request->input('Nama');
-$title=$request->input('Tujuan');
-$title=$request->input('description');
-$title=$request->input('waktu_masuk');
-$title=$request->input('operator_id');
-$title=$request->input('notified');
-$title=$request->input('aceppted');
 
+$title=$request->input('title');
+$NIK=$request->input('NIK');
+$Nama=$request->input('Nama');
+$Tujuan=$request->input('tujuan');
+$description=$request->input('description');
+$waktu_masuk=$request->input('waktu_masuk');
+$operator_id=$request->input('operator_id');
+$notified=$request->input('notified');
+$aceppted=$request->input('aceppted');
+
+$intercations =new interactions([
+'title'=>$title,
+'NIK'=>$NIK,
+'Nama'=>$Nama,
+'tujuan'=>$Tujuan,
+'description'=>$description,
+'waktu_masuk'=>$waktu_masuk,
+'operator_id'=>$operator_id,
+'notified'=>$notified,
+'aceppted'=>$aceppted,
+
+]);
+if ($intercations ->save()){
+    $intercations->view_interaction = [
+
+        'href'=>'api/v1/interaction/'.$intercations->id,
+        'method' => 'GET'
+    ];
+    $message=[
+        'msg' =>'Interactions Created',
+        'data' => $intercations
+        ];
+        return response() ->json($message,200);
+}
+
+$response=[
+    'msg' =>'Error During Created interaction'
+];
+return response() ->json($response,400);
 
     }
 
@@ -86,7 +118,8 @@ $title=$request->input('aceppted');
      */
     public function edit($id)
     {
-        //
+        $intercations = interactions('id',$id)->findOrFail();
+
     }
 
     /**

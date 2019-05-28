@@ -17,7 +17,7 @@ class CreateInteractionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('description');
-            $table->integer('NIK');
+            $table->string('NIK');
             $table->string('Nama');
             $table->string('tujuan');
             $table->dateTime('waktu_masuk')->nullable();
