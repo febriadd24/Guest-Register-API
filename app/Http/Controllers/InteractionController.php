@@ -62,7 +62,7 @@ $NIK=$request->input('NIK');
 $Nama=$request->input('Nama');
 $Tujuan=$request->input('tujuan');
 $description=$request->input('description');
-$waktu_masuk=$request->input('waktu_masuk');
+$waktu_masuk=$request->time;
 $operator_id=$request->input('operator_id');
 $notified=$request->input('notified');
 $aceppted=$request->input('aceppted');
@@ -107,7 +107,7 @@ return response() ->json($response,400);
      */
     public function show($id)
     {
-        //
+        $intercations = interactions::findOrFail($id);
     }
 
     /**
@@ -118,7 +118,7 @@ return response() ->json($response,400);
      */
     public function edit($id)
     {
-        $intercations = interactions('id',$id)->findOrFail();
+
 
     }
 
@@ -131,7 +131,36 @@ return response() ->json($response,400);
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'waktu_keluar'=>'required'
+        ]);
+
+$title=$request->input('waktu_keluar');
+
+
+$intercations = interactions::findOrFail($id);
+
+if (!$intercations ->update()){
+    return response()->json([
+        'message' => 'Error during update'
+    ], 404);
+}
+    $intercations->view_interaction = [
+
+        'href'=>'api/v1/interaction/'.$intercations->id,
+        'method' => 'GET'
+    ];
+    $message=[
+        'msg' =>'Interactions Updated',
+        'data' => $intercations
+        ];
+        return response() ->json($message,200);
+
+
+$response=[
+    'msg' =>'Error During Created interaction'
+];
+return response() ->json($response,400);
     }
 
     /**
