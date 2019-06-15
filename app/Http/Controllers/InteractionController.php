@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\interactions;
 use SebastianBergmann\CodeCoverage\Report\Xml\Method;
+use Faker\Provider\cs_CZ\DateTime;
 
 class InteractionController extends Controller
 {
@@ -55,6 +56,8 @@ return response()->json($response, 200);
             'title'=>'required',
             'NIK'=>'required',
             'Nama'=>'required',
+            'tujuan'=>'required',
+            'description'=>'required',
         ]);
 
 $title=$request->input('title');
@@ -62,10 +65,10 @@ $NIK=$request->input('NIK');
 $Nama=$request->input('Nama');
 $Tujuan=$request->input('tujuan');
 $description=$request->input('description');
-$waktu_masuk=$request->time;
 $operator_id=$request->input('operator_id');
 $notified=$request->input('notified');
 $aceppted=$request->input('aceppted');
+$waktu_masuk=date('Y-m-d H:i:s');
 
 $intercations =new interactions([
 'title'=>$title,
@@ -105,9 +108,20 @@ return response() ->json($response,400);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        $intercations = interactions::findOrFail($id);
+        $intercation = interactions::findOrFail($id);
+        $intercation->view_interctions = [
+        'href'=>'api/v1/interactions/',
+    'method'=>'GET'
+        ];
+
+        $response =[
+            'msg'=>'detail Interactions',
+            'meeting'=> $intercation
+        ];
+return response()->json($response,200);
     }
 
     /**
@@ -135,10 +149,12 @@ return response() ->json($response,400);
             'waktu_keluar'=>'required'
         ]);
 
-$title=$request->input('waktu_keluar');
+$outtime=$request->input('waktu_keluar');
 
 
 $intercations = interactions::findOrFail($id);
+
+$intercations->waktu_keluar=$outtime;
 
 if (!$intercations ->update()){
     return response()->json([
@@ -156,11 +172,6 @@ if (!$intercations ->update()){
         ];
         return response() ->json($message,200);
 
-
-$response=[
-    'msg' =>'Error During Created interaction'
-];
-return response() ->json($response,400);
     }
 
     /**
