@@ -182,6 +182,13 @@ if (!$intercations ->update()){
      */
     public function destroy($id)
     {
-        //
+        $intercations = interactions::findOrFail($id);
+        $intercations->delete();
+        $response =[
+            'msg'=>'Delete Interactions',
+            'meeting'=> $intercations
+        ];
+return response()->json($response,200);
     }
+
 }
