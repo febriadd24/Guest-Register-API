@@ -15,7 +15,7 @@ class CreatePengunjungsTable extends Migration
     {
         Schema::create('pengunjungs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('NIK');
+            $table->string('NIK');
             $table->string('Nama');
             $table->string('TempatLahir');
             $table->string('TglLahir');
@@ -34,7 +34,7 @@ class CreatePengunjungsTable extends Migration
             $table->string('Kewarganegaraan');
             $table->text('Foto');
             $table->text('TandaTangan');
-            $table->string('FingerPrint');
+            $table->text('FingerPrint');
             $table->timestamps();
         });
     }

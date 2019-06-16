@@ -17,4 +17,7 @@ Route::group(['prefix' => 'v1'], function() {
     Route::resource('interaction', 'InteractionController', [
         'except' => ['create', 'edit']
     ]);
+    Route::resource('pengunjung', 'PengunjungController', [
+        'except' => ['create', 'edit']
+        ]);
 });
