@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
+Route::resource('/daftartamu','DaftartamuController');
+Route::get('/table/daftartamu', 'DaftartamuController@dataTable')->name('table.daftartamu');
+

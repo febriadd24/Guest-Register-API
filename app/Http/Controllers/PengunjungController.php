@@ -149,7 +149,17 @@ return response() ->json($response,400);
      */
     public function show($id)
     {
-        //
+        $pengunjungs = pengunjung::findOrFail($id);
+        $pengunjungs->view_pengunjungs = [
+        'href'=>'api/v1/pengunjung/'.$pengunjungs->id,
+    'method'=>'GET'
+        ];
+
+        $response =[
+            'msg'=>'detail Pengunjung',
+            'Data'=> $pengunjungs
+        ];
+return response()->json($response,200);
     }
 
     /**
@@ -183,6 +193,12 @@ return response() ->json($response,400);
      */
     public function destroy($id)
     {
-        //
+        $pengunjungs = pengunjung::where('NIK', '=', $id)->firstOrFail();
+        $pengunjungs->delete();
+        $response =[
+            'msg'=>'Delete pengunjung',
+            'Data'=> $pengunjungs
+        ];
+return response()->json($response,200);
     }
 }
