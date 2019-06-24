@@ -252,7 +252,7 @@
           </ul>
         </li>--}}
         <li>
-          <a href="">
+        <a href="{{route('daftartamu.index')}}"
             <i class="fa fa-th"></i> <span>Daftar Tamu</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">!!</small>
@@ -441,7 +441,7 @@
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-        {{-- @include('layouts._modal') --}}
+        @include('_modal')
     </section>
     <!-- /.content -->
   </div>

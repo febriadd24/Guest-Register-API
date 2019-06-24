@@ -10,78 +10,74 @@
     <div class="box-body">
 
 
-        echo Form::model($model, [
+        {!! Form::model($model, [
             'route' => $model->exists ? ['daftartamu.update', $model->id] : 'daftartamu.store',
             'method' => $model->exists ? 'PUT' : 'POST'
-        ]);
-
+        ]) !!}
 
 {{-- {!! Form::hidden('_method',['value'=>'PUT'])!!} --}}
             <!-- text input -->
             <div class="form-group">
-                <label>Produk</label>
-                <?php
-        echo Form::select('name',array('D01' =>'ABAKA D' ,'D02' =>'ABAKA D+' ,'DLite' =>'ABAKA D1' ,'H01' =>'ABAKA H' ,'H02' =>'ABAKA H2' ),'D1');
-
-        echo Form::hidden('User_Name',Auth::user()->name, null, ['class' => 'form-control', 'id' => 'User_Name']) ?>
-
-            </div>
-            <div class="form-group">
-                <label>Serial Number Alat</label>
-                {!! Form::text('SN_Device', null, ['class' => 'form-control', 'id' => 'SN_Device', 'placeholder'=>'Serial Number Alat ...']) !!}
+                <label>NIK Pengunjung</label>
+        {!! Form::text('NIK', null, ['class' => 'form-control', 'id' => 'NIK', 'placeholder'=>'NIK ...'])!!}
             </div>
 
             <div class="form-group">
-            <label>Nomor SAM</label>
-        {!! Form::text('NO_Sam', null, ['class' => 'form-control', 'id' => 'NO_Sam', 'placeholder'=>'Enter ...']) !!}
+                <label>Nama Pengunjung</label>
+            {!! Form::text('Nama', null, ['class' => 'form-control', 'id' => 'Nama', 'placeholder'=>'Nama ...']) !!}
+            </div>
+
+            <div class="form-group">
+            <label>Tempat Lahir</label>
+        {!! Form::text('TempatLahir', null, ['class' => 'form-control', 'id' => 'TempatLahir', 'placeholder'=>'TempatLahir ...']) !!}
     </div>
 
             <div class="form-group">
-                <label>No Perso SAM</label>
-                {!! Form::text('NO_Perso', null, ['class' => 'form-control', 'id' => 'NO_Perso', 'placeholder'=>'Enter ...']) !!}
+                <label>TglLahir</label>
+                {!! Form::text('TglLahir', null, ['class' => 'form-control', 'id' => 'TglLahir', 'placeholder'=>'TglLahir ...']) !!}
             </div>
+
             <div class="form-group">
+                <label>Jenis Kelamin</label>
+                {!! Form::text('JenisKelamin', null, ['class' => 'form-control', 'id' => 'JenisKelamin', 'placeholder'=>'JenisKelamin ...']) !!}
+            </div>
+
+            <div class="form-group">
+                <label>Alamat</label>
+                {!! Form::text('Alamat', null, ['class' => 'form-control', 'id' => 'Alamat', 'placeholder'=>'Alamat ...']) !!}
+                <label>RT</label>
+                {!! Form::text('RT', null, ['class' => 'form-control', 'id' => 'RT', 'placeholder'=>'JenisKelamin ...']) !!}
+                <label>RW</label>
+                {!! Form::text('RW', null, ['class' => 'form-control', 'id' => 'RW', 'placeholder'=>'JenisKelamin ...']) !!}
+                <label>Kelurahan</label>
+                {!! Form::text('Kelurahan', null, ['class' => 'form-control', 'id' => 'Kelurahan', 'placeholder'=>'Kelurahan ...']) !!}
+                <label>Kecamatan</label>
+                {!! Form::text('Kecamatan', null, ['class' => 'form-control', 'id' => 'Kecamatan', 'placeholder'=>'Kecamatan ...']) !!}
+                <label>Kota</label>
+                {!! Form::text('Kota', null, ['class' => 'form-control', 'id' => 'Kota', 'placeholder'=>'Kota ...']) !!}
                 <label>Provinsi</label>
-                {!!Form::select('Provinsi',$states,null,['id'=>'Provinsi',])!!}
-                {!!Form::select('Kota',['placeholder'=>'Kabupaten'],null,['id'=>'Kota'])!!}
-                {{-- <label>Kecamatan/Kelurahan</label> --}}
-                {!! Form::text('Kecamatan', null, ['id' => 'Kecamatan','size' => '40', 'placeholder'=>'Kecamatan/Kelurahan ...']) !!}
+                {!! Form::text('Provinsi', null, ['class' => 'form-control', 'id' => 'Provinsi', 'placeholder'=>'Provinsi ...']) !!}
             </div>
-            <!-- textarea -->
+
             <div class="form-group">
-                <label>ALAMAT</label>
-                {!! Form::textarea('Alamat', null, ['class'=>'form-control','id' => 'Alamat','rows' => '2', 'placeholder'=>'Alamat ...']) !!}
-
+                <label>AGAMA</label>
+                {!! Form::text('Agama', null, ['class' => 'form-control', 'id' => 'Agama', 'placeholder'=>'Agama ...']) !!}
             </div>
-<!-- IP mask -->
-<div class="form-group">
-    <label>Alamat IP:</label>
 
-    <div class="input-group">
-      <div class="input-group-addon">
-        <i class="fa fa-laptop"></i>
-      </div>
-      {!! Form::text('IP_Address', null, ['class'=>'form-control','id' => 'IP_Address', 'data-inputmask'=>'alias:ip','data-mask']) !!}
+            <div class="form-group">
+                <label>status</label>
+                {!! Form::text('status', null, ['class' => 'form-control', 'id' => 'status', 'placeholder'=>'status...']) !!}
+            </div>
 
-      {{-- <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask> --}}
-    </div>
-
-    <div class="form-group">
-    <label>Data Aktivasi</label>
-    <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-envelope-o"></i>
-        </div>
-        {!! Form::text('activation_number', null, ['class'=>'form-control','id' => 'activation_number', 'data-inputmask'=>'alias:activation_number','data-mask','placeholder'=>'Nomor Aktifasi ...']) !!}
-        {!! Form::text('reply_activation_number', null, ['class'=>'form-control','id' => 'reply_activation_number', 'data-inputmask'=>'alias:reply_activation_number','data-mask','placeholder'=>'Reply Nomor Aktifasi ...']) !!}
-        {!! Form::text('activation_date', null, ['class'=>'form-control','id' => 'activation_date', 'data-inputmask'=>'alias:activation_date','data-mask','placeholder'=>'activation_date ...']) !!}
-        {!! Form::text('activation_request_date', null, ['class'=>'form-control','id' => 'activation_request_date', 'data-inputmask'=>'alias:activation_request_date','data-mask','placeholder'=>'Request activation_date ...']) !!}
-
-        {{-- <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask> --}}
-      </div>
-    <!-- /.input group -->
-  </div>
-  <!-- /.form group -->
+            <div class="form-group">
+            </div>
+            <label>Pekerjaan</label>
+                {!! Form::text('Pekerjaan', null, ['class' => 'form-control', 'id' => 'Pekerjaan', 'placeholder'=>'Pekerjaan...']) !!}
+            </div>
+            <div class="form-group">
+                <label>Kewarganegaraan</label>
+                {!! Form::text('Kewarganegaraan', null, ['class' => 'form-control', 'id' => 'Kewarganegaraan', 'placeholder'=>'Kewarganegaraan...']) !!}
+            </div>
 
     {!! Form::close() !!}
     </div>
