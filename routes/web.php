@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('app');
 });
-Route::resource('/daftartamu','DaftartamuController');
+Route::resource('/daftartamu','DaftartamuController',['except' => ['show']]);
+Route::get('/daftartamu/{NIK}', 'DaftartamuController@show')->name('daftartamu.show');
 Route::get('/table/daftartamu', 'DaftartamuController@dataTable')->name('table.daftartamu');
 

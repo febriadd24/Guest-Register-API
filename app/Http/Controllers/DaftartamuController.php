@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 use App\interactions;
+use App\pengunjung;
 class DaftartamuController extends Controller
 {
     /**
@@ -44,9 +45,11 @@ class DaftartamuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($NIK)
     {
         //
+        $model = pengunjung::where('NIK', '=', $NIK)->firstOrFail();
+        return view('DetailPengunjung',compact('model'));
     }
 
     /**
@@ -89,7 +92,7 @@ class DaftartamuController extends Controller
             ->addColumn('action', function ($model) {
                 return view('_action', [
                     'model' => $model,
-                    'url_show' => route('daftartamu.show', $model->id),
+                    'url_show' => route('daftartamu.show', $model->NIK),
                     'url_edit' => route('daftartamu.edit', $model->id),
                     'url_destroy' => route('daftartamu.destroy', $model->id)
                 ]);
