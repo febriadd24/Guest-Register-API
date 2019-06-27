@@ -13,10 +13,12 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th>Description</th>
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>tujuan</th>
+                    <th>Description</th>
+                    <th>Masuk</th>
+                    <th>Keluar</th>
                     <th>Action</th>
 
                 </tr>
@@ -28,10 +30,12 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th>Description</th>
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>tujuan</th>
+                    <th>Description</th>
+                    <th>Masuk</th>
+                    <th>Keluar</th>
                     <th>Action</th>
 
                 </tr>
@@ -51,12 +55,12 @@
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'title', name: 'title'},
-                {data: 'description', name: 'description'},
                 {data: 'NIK', name: 'NIK'},
                 {data: 'Nama', name: 'Nama'},
                 {data: 'tujuan', name: 'tujuan'},
-                // {data: 'waktu_masuk', name: 'waktu_masuk'},
-                // {data: 'waktu_masuk', name: 'waktu_masuk'},
+                {data: 'description', name: 'description'},
+                {data: 'waktu_masuk', name: 'waktu_masuk'},
+                {data: 'waktu_keluar', name: 'waktu_keluar'},
                 {data: 'action', name: 'action'}
             ]
         });

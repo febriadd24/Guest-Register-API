@@ -20,4 +20,7 @@ Route::group(['prefix' => 'v1'], function() {
     Route::resource('pengunjung', 'PengunjungController', [
         'except' => ['create', 'edit']
         ]);
+        Route::resource('tujuan', 'TujuanController', [
+            'except' => ['create', 'edit']
+            ]);
 });

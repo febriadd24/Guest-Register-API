@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\tujuan;
 
 class TujuanController extends Controller
 {
@@ -13,7 +14,20 @@ class TujuanController extends Controller
      */
     public function index()
     {
-        //
+        $Tujuans = tujuan::all();
+        foreach($Tujuans as $Tujuan)
+        { $Tujuans->view_interaction =
+        [
+        'href'=>'api/v1/tujuan/' . $Tujuans->id,
+        'method'=> 'GET'
+
+        ];
+        }
+        $response =[
+            'msg'=>'Daftar Tujuan',
+            'Tujuan' => $Tujuans
+        ];
+        return response()->json($response, 200);
     }
 
     /**
@@ -45,7 +59,17 @@ class TujuanController extends Controller
      */
     public function show($id)
     {
-        //
+        $Tujuans = tujuan::findOrFail($id);
+        $Tujuans->view_Tujuans = [
+        'href'=>'api/v1/Tujuan/'.$Tujuans->id,
+    'method'=>'GET'
+        ];
+
+        $response =[
+            'msg'=>'detail Tujuan',
+            'Data'=> $Tujuans
+        ];
+return response()->json($response,200);
     }
 
     /**
