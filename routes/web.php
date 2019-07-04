@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/bukutamu', function () {
     return view('app');
 });
 Route::resource('/daftartamu','DaftartamuController',['except' => ['show']]);
