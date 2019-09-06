@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\pengunjung;
 use SebastianBergmann\CodeCoverage\Report\Xml\Method;
@@ -16,7 +16,9 @@ class PengunjungController extends Controller
      */
     public function index()
     {
+        $pengunjungs=auth()->user()->pengunjung;
         $pengunjungs = pengunjung::all();
+
         foreach($pengunjungs as $pengunjung)
         { $pengunjung->view_interaction =
         [
@@ -71,9 +73,9 @@ class PengunjungController extends Controller
 
             'Kota'=>'required',
             'Kewarganegaraan'=>'required',
-            // 'Foto'=>'required',
-            // 'TandaTangan'=>'required',
-            // 'FingerPrint'=>'required',
+             'Foto'=>'required',
+            //  'TandaTangan'=>'required',
+            //  'FingerPrint'=>'required',
         ]);
 
 $NIK=$request->input('NIK');
@@ -94,10 +96,16 @@ $Pekerjaan=$request->input('Pekerjaan');
 $Provinsi=$request->input('Provinsi');
 $Kota=$request->input('Kota');
 $Kewarganegaraan=$request->input('Kewarganegaraan');
+$Foto = $request->Foto;  // your base64 encoded
+$Foto = str_replace('data:image/png;base64,', '', $Foto);
+$Foto = str_replace(' ', '+', $Foto);
+$FotoName = $NIK.'.'.'png';
+Storage::put('/foto/' . $FotoName, base64_decode($Foto));
 $Foto=$request->input('Foto');
 $TandaTangan=$request->input('TandaTangan');
 $FingerPrint=$request->input('FingerPrint');
 
+$pengunjungs=auth()->user()->pengunjung;
 $pengunjungs =new pengunjung([
     'NIK'=>$NIK,
     'Nama'=>$Nama,
@@ -116,7 +124,7 @@ $pengunjungs =new pengunjung([
      'Provinsi'=>$Provinsi,
      'Kota'=>$Kota,
      'Kewarganegaraan'=>$Kewarganegaraan,
-     'Foto'=>$Foto,
+     'Foto'=>Storage::url('app/foto/'.$FotoName),
      'TandaTangan'=>$TandaTangan,
      'FingerPrint'=>$FingerPrint
 
@@ -149,6 +157,7 @@ return response() ->json($response,400);
      */
     public function show($id)
     {
+        $pengunjungs=auth()->user()->pengunjung;
         $pengunjungs = pengunjung::findOrFail($id);
         $pengunjungs->view_pengunjungs = [
         'href'=>'api/v1/pengunjung/'.$pengunjungs->id,
@@ -193,6 +202,7 @@ return response()->json($response,200);
      */
     public function destroy($id)
     {
+        $pengunjungs=auth()->user()->pengunjung;
         $pengunjungs = pengunjung::where('NIK', '=', $id)->firstOrFail();
         $pengunjungs->delete();
         $response =[

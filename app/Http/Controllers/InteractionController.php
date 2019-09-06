@@ -69,7 +69,7 @@ $operator_id=$request->input('operator_id');
 $notified=$request->input('notified');
 $aceppted=$request->input('aceppted');
 $waktu_masuk=date('Y-m-d H:i:s');
-
+$intercations=auth()->user()->interactions;
 $intercations =new interactions([
 'title'=>$title,
 'NIK'=>$NIK,
@@ -151,7 +151,7 @@ return response()->json($response,200);
 
 $outtime=$request->input('waktu_keluar');
 
-
+$intercations=auth()->user()->interactions;
 $intercations = interactions::findOrFail($id);
 
 $intercations->waktu_keluar=$outtime;
@@ -182,6 +182,7 @@ if (!$intercations ->update()){
      */
     public function destroy($id)
     {
+        $intercations=auth()->user()->interactions;
         $intercations = interactions::findOrFail($id);
         $intercations->delete();
         $response =[

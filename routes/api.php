@@ -17,10 +17,20 @@ Route::group(['prefix' => 'v1'], function() {
     Route::resource('interaction', 'InteractionController', [
         'except' => ['create', 'edit']
     ]);
-    Route::resource('pengunjung', 'PengunjungController', [
+
+
+            Route::post('login', 'UserController@login');
+            Route::post('register', 'UserController@register');Route::group(['middleware' => 'auth:api'], function(){
+            Route::post('details', 'UserController@details');
+
+            Route::resource('pengunjung', 'PengunjungController', [
         'except' => ['create', 'edit']
         ]);
         Route::resource('tujuan', 'TujuanController', [
             'except' => ['create', 'edit']
             ]);
+        });
+
 });
+
+

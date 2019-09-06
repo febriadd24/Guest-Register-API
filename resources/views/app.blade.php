@@ -147,7 +147,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../assets/AdmiLte/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">user</span>
+              <span class="hidden-xs"> {{Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -155,7 +155,7 @@
                 <img src="../../assets/AdmiLte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  users- User
+                    {{Auth::user()->name}}- User
                   <small>Company Name</small>
                 </p>
               </li>
@@ -206,7 +206,7 @@
           <img src="../../assets/AdmiLte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>user</p>
+          <p> {{Auth::user()->name}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
