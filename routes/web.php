@@ -11,13 +11,8 @@
 |
 */
 
-<<<<<<< HEAD
-Route::get('/bukutamu', function () {
-    return view('app');
-=======
 Route::get('/', function () {
     return view('auth.login');
->>>>>>> passport fix users
 });
 Route::resource('/daftartamu','DaftartamuController',['except' => ['show']]);
 Route::get('/daftartamu/{NIK}', 'DaftartamuController@show')->name('daftartamu.show');
