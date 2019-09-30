@@ -14,9 +14,11 @@
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::resource('/daftartujuan','DaftartujuanController');
 Route::resource('/daftartamu','DaftartamuController',['except' => ['show']]);
 Route::get('/daftartamu/{NIK}', 'DaftartamuController@show')->name('daftartamu.show');
 Route::get('/table/daftartamu', 'DaftartamuController@dataTable')->name('table.daftartamu');
+Route::get('/table/daftartujuan', 'DaftartujuanController@dataTable')->name('table.daftartujuan');
 
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
