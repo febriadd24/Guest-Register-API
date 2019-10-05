@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 use App\tujuan;
-class DaftartamuController extends Controller
+
+
+class DaftartujuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,11 +47,11 @@ class DaftartamuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($NIK)
+    public function show($id)
     {
         //
-        $model = pengunjung::where('NIK', '=', $NIK)->firstOrFail();
-        return view('DetailPengunjung',compact('model'));
+        $model = tujuan::findOrFail($id);
+        return view('Detailtujuan',compact('model'));
     }
 
     /**
@@ -88,14 +90,14 @@ class DaftartamuController extends Controller
     }
     public function dataTable()
     {
-        $model = interactions::query();
+        $model = tujuan::query();
         return DataTables::of($model)
             ->addColumn('action', function ($model) {
-                return view('_action', [
+                return view('_actioncrud', [
                     'model' => $model,
-                    'url_show' => route('daftartamu.show', $model->NIK),
-                    'url_edit' => route('daftartamu.edit', $model->id),
-                    'url_destroy' => route('daftartamu.destroy', $model->id)
+                    'url_show' => route('daftartujuan.show', $model->id),
+                    'url_edit' => route('daftartujuan.edit', $model->id),
+                    'url_destroy' => route('daftartujuan.destroy', $model->id)
                 ]);
             })
             ->addIndexColumn()

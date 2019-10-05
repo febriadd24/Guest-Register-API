@@ -283,7 +283,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> Aplikasi</a></li>
+            <li><a href="{{route('daftartujuan.index')}}"<i class="fa fa-circle-o"></i> Tujuan</a></li>
             <li><a href=""><i class="fa fa-circle-o"></i> Key</a></li>
           </ul>
         </li>

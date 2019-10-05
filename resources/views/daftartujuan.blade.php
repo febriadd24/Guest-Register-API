@@ -12,13 +12,13 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
-                    <th>NIK</th>
                     <th>Nama</th>
-                    <th>tujuan</th>
-                    <th>Description</th>
-                    <th>Masuk</th>
-                    <th>Keluar</th>
+                    <th>Department</th>
+                    <th>Bagian</th>
+                    <th>NIP</th>
+                    <th>Status</th>
+                    <th>created_at</th>
+                    <th>updated_at</th>
                     <th>Action</th>
 
                 </tr>
@@ -29,13 +29,13 @@
                 <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
-                    <th>NIK</th>
                     <th>Nama</th>
-                    <th>tujuan</th>
-                    <th>Description</th>
-                    <th>Masuk</th>
-                    <th>Keluar</th>
+                    <th>Department</th>
+                    <th>Bagian</th>
+                    <th>NIP</th>
+                    <th>Status</th>
+                    <th>created_at</th>
+                    <th>updated_at</th>
                     <th>Action</th>
 
                 </tr>
@@ -51,16 +51,16 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax: "{{ route('table.daftartamu') }}",
+            ajax: "{{ route('table.daftartujuan') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'title', name: 'title'},
-                {data: 'NIK', name: 'NIK'},
                 {data: 'Nama', name: 'Nama'},
-                {data: 'tujuan', name: 'tujuan'},
-                {data: 'description', name: 'description'},
-                {data: 'waktu_masuk', name: 'waktu_masuk'},
-                {data: 'waktu_keluar', name: 'waktu_keluar'},
+                {data: 'Department', name: 'Department'},
+                {data: 'Bagian', name: 'Bagian'},
+                {data: 'NIP', name: 'NIP'},
+                {data: 'Status', name: 'Status'},
+                {data: 'created_at', name: 'created_at'},
+                {data: 'updated_at', name: 'updated_at'},
                 {data: 'action', name: 'action'}
             ]
         });
