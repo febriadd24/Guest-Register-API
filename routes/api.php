@@ -17,8 +17,6 @@ Route::group(['prefix' => 'v1'], function() {
     Route::resource('interaction', 'InteractionController', [
         'except' => ['create', 'edit']
     ]);
-
-
             Route::post('login', 'UserController@login');
             Route::post('register', 'UserController@register');Route::group(['middleware' => 'auth:api'], function(){
             Route::post('details', 'UserController@details');
