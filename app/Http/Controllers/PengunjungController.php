@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\pengunjung;
 use SebastianBergmann\CodeCoverage\Report\Xml\Method;
@@ -16,7 +17,7 @@ class PengunjungController extends Controller
      */
     public function index()
     {
-        $pengunjungs=auth()->user()->pengunjung;
+        // $pengunjungs=auth()->user()->pengunjung;
         $pengunjungs = pengunjung::all();
 
         foreach($pengunjungs as $pengunjung)

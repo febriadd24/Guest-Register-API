@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DataTables;
-use App\interactions;
-use App\pengunjung;
+use App\tujuan;
 class DaftartamuController extends Controller
 {
     /**
@@ -15,7 +14,7 @@ class DaftartamuController extends Controller
      */
     public function index()
     {
-        return view('daftartamu');
+        return view('daftartujuan');
     }
 
     /**
@@ -25,7 +24,8 @@ class DaftartamuController extends Controller
      */
     public function create()
     {
-        //
+        $model = New tujuan;
+        return view('form',compact('model'));
     }
 
     /**
