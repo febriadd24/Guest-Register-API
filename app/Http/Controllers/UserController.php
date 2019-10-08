@@ -42,6 +42,7 @@ $input = $request->all();
         $user = User::create($input);
         $success['token'] =  $user->createToken('BUKUTAMU')-> accessToken;
         $success['name'] =  $user->name;
+        $success['active'] =  $user='1';
 return response()->json(['success'=>$success], $this-> successStatus);
     }
 /**
