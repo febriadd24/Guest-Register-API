@@ -1,4 +1,4 @@
-@extends('simple')
+{{-- @extends('simple')
 
 @section('content')
 
@@ -7,7 +7,7 @@
         <h3 class="box-title">Profil Tujuan</h3>
     </div>
     <!-- /.box-header -->
-    <div class="box-body">
+    <div class="box-body"> --}}
 
 
         {!! Form::model($model, [
@@ -15,9 +15,10 @@
             'method' => $model->exists ? 'PUT' : 'POST'
         ]) !!}
 
-{{-- {!! Form::hidden('_method',['value'=>'PUT'])!!} --}}
+
             <!-- text input -->
             <div class="form-group">
+                    {{-- {!! Form::hidden('_method',['value'=>'PUT'])!!} --}}
                 <label>NIP Tujuan</label>
         {!! Form::text('NIP', null, ['class' => 'form-control', 'id' => 'NIP', 'placeholder'=>'NIP ...'])!!}
             </div>
@@ -46,13 +47,11 @@
                 <label>Status</label>
                 {!! Form::text('Status', null, ['class' => 'form-control', 'id' => 'Status', 'placeholder'=>'Status...']) !!}
             </div>
-
-
     {!! Form::close() !!}
-    </div>
+    {{-- </div>
     <!-- /.box-body -->
 
 </div>
 <!-- /.box -->
 @endsection
-
+ --}}

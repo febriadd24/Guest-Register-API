@@ -4,18 +4,20 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Daftar Tujuan
-                <a href="{{ route('daftartujuan.create') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create Product"><i class="icon-plus"></i> Create</a>
+                <a href="{{ route('daftartujuan.create') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create Product">
+                    <i class="icon-plus"></i>Create</a>
             </h3>
         </div>
         <div class="panel-body">
             <table id="datatable" class="table table-hover" style="width:100%">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>id</th>
                     <th>Nama</th>
                     <th>Department</th>
                     <th>Bagian</th>
                     <th>NIP</th>
+                    <th>Availiable</th>
                     <th>Status</th>
                     <th>created_at</th>
                     <th>updated_at</th>
@@ -28,11 +30,12 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Id</th>
+                    <th>id</th>
                     <th>Nama</th>
                     <th>Department</th>
                     <th>Bagian</th>
                     <th>NIP</th>
+                    <th>Availiable</th>
                     <th>Status</th>
                     <th>created_at</th>
                     <th>updated_at</th>
@@ -58,6 +61,7 @@
                 {data: 'Department', name: 'Department'},
                 {data: 'Bagian', name: 'Bagian'},
                 {data: 'NIP', name: 'NIP'},
+                {data: 'Availiable', name: 'Availiable'},
                 {data: 'Status', name: 'Status'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},

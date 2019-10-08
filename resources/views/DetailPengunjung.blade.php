@@ -1,4 +1,4 @@
-@extends('simple')
+{{-- @extends('simple')
 
 @section('content')
 
@@ -7,7 +7,7 @@
         <h3 class="box-title">Profil Pengunjung</h3>
     </div>
     <!-- /.box-header -->
-    <div class="box-body">
+    <div class="box-body"> --}}
 
 
         {!! Form::model($model, [
@@ -80,10 +80,10 @@
             </div>
 
     {!! Form::close() !!}
-    </div>
+    {{-- </div>
     <!-- /.box-body -->
 
 </div>
 <!-- /.box -->
-@endsection
+@endsection --}}
 
