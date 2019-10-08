@@ -27,7 +27,7 @@ class DaftartujuanController extends Controller
     public function create()
     {
         $model = New tujuan;
-        return view('form',compact('model'));
+        return view('detailtujuan',compact('model'));
     }
 
     /**
@@ -38,7 +38,15 @@ class DaftartujuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'NIP' => 'required',
+            'Nama' => 'required',
+            'Availiable' => 'required',
+            'Status' => 'required',
+        ]);
+
+        $model = tujuan::create($request->all());
+        return $model;
     }
 
     /**
@@ -62,7 +70,8 @@ class DaftartujuanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = tujuan::findOrFail($id);
+        return view('Detailtujuan',compact('model'));
     }
 
     /**
@@ -74,7 +83,13 @@ class DaftartujuanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'Nama' => 'required',
+            'Availiable' => 'required',
+            'Status' => 'required|',
+        ]);
+        $model= tujuan::findOrFail($id);
+        $model->update($request->all());
     }
 
     /**
@@ -85,7 +100,7 @@ class DaftartujuanController extends Controller
      */
     public function destroy($id)
     {
-        $model= interactions::findOrFail($id);
+        $model= tujuan::findOrFail($id);
         $model->delete();
     }
     public function dataTable()

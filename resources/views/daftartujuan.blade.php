@@ -3,7 +3,7 @@
 @section('content')
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Daftar Tamu
+            <h3 class="panel-title">Daftar Tujuan
                 <a href="{{ route('daftartujuan.create') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create Product"><i class="icon-plus"></i> Create</a>
             </h3>
         </div>
