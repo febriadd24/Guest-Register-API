@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\tujuan;
 
@@ -16,11 +17,10 @@ class TujuanController extends Controller
     {
         $Tujuans = tujuan::all();
         foreach($Tujuans as $Tujuan)
-        { $Tujuans->view_interaction =
+        { $Tujuan->view_interaction =
         [
-        'href'=>'api/v1/tujuan/' . $Tujuans->id,
+        'href'=>'api/v1/tujuan/' . $Tujuans,
         'method'=> 'GET'
-
         ];
         }
         $response =[
