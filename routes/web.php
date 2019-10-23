@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('auth.login');
 });
+// Route::get('/home','DashboardController@Alltoday');
 Route::resource('/daftartujuan','DaftartujuanController');
 Route::resource('/daftartamu','DaftartamuController',['except' => ['show']]);
 Route::get('/daftartamu/{NIK}', 'DaftartamuController@show')->name('daftartamu.show');
@@ -25,6 +26,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('Auth/login','Auth\LoginController@showLoginForm')->name('auth.login');
 Route::get('Auth/Register','Auth\RegisterController@showRegistrationForm')->name('auth.register');
 // Route::get('Auth/activate','Auth\ActivationController@activate')->name('auth.activate');
-Route::get('/home','HomeController@index')->name('home');
+Route::get('/home','HomeController@Alltoday')->name('Alltoday');
+// Route::get('/home','HomeController@index')->name('home');
 // Route::get('Auth/activate/resend','Auth\ActivationResendController@showResendForm')->name('auth.activate.resend');
 // Route::post('Auth/activate/resend', 'Auth\ActivationResendController@resend');
