@@ -159,7 +159,7 @@ return response() ->json($response,400);
     public function show($id)
     {
         $pengunjungs=auth()->user()->pengunjung;
-        $pengunjungs = pengunjung::findOrFail($id);
+        $pengunjungs = pengunjung::where('NIK', '=', $id)->firstOrFail();
         $pengunjungs->view_pengunjungs = [
         'href'=>'api/v1/pengunjung/'.$pengunjungs->id,
     'method'=>'GET'

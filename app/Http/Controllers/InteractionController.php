@@ -151,7 +151,7 @@ return response()->json($response,200);
 
 $outtime=$request->input('waktu_keluar');
 
-$intercations=auth()->user()->interactions;
+// $intercations=auth()->user()->interactions;
 $intercations = interactions::findOrFail($id);
 
 $intercations->waktu_keluar=$outtime;
