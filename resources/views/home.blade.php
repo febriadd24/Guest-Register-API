@@ -42,7 +42,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{$countsIn}}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Pengunjung Masuk</p>
             </div>
@@ -59,7 +59,7 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>44</h3>
+            <h3>{{$countsOut}}</h3>
 
                 <p>Pengunjung Keluar</p>
             </div>
@@ -76,7 +76,7 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>65</h3>
+                <h3>{{$countsMiss}}</h3>
 
                 <p>Miss Sign out</p>
             </div>
