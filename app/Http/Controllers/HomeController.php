@@ -35,7 +35,7 @@ class HomeController extends Controller
 $counts = DB::table('interactions')
             ->where('waktu_masuk','>',$mytime)
             ->count();
-
+//try
             return view('home',compact('counts'));
     }
 }
