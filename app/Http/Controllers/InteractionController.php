@@ -27,8 +27,7 @@ foreach($intercations as $interaction)
 ];
 }
 $response =[
-    'msg'=>'Daftar Interaksi Tamu',
-    'interactions' => $intercations
+    $intercations
 ];
 return response()->json($response, 200);
     }
