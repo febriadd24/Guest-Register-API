@@ -13,7 +13,7 @@
                       </button>
                     </div> --}}
 
-                {{-- <a href="{{ route('daftartamu.create') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create Product"><i class="icon-plus"></i> Create</a> --}}
+                <a href="{{ route('daftartamu.ExportInterction') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Export Excel"><i class="icon-plus"></i> Export Excel</a>
             </h3>
         </div>
         <div class="panel-body">

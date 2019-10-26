@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 // Route::get('/home','DashboardController@Alltoday');
+Route::get('/daftartamu/export', 'DaftartamuController@ExportInterction')->name('daftartamu.ExportInterction');
 Route::resource('/daftartujuan','DaftartujuanController');
 Route::resource('/daftartamu','DaftartamuController',['except' => ['show']]);
 Route::get('/daftartamu/{NIK}', 'DaftartamuController@show')->name('daftartamu.show');
+
 Route::get('/table/daftartamu', 'DaftartamuController@dataTable')->name('table.daftartamu');
 Route::get('/table/daftartujuan', 'DaftartujuanController@dataTable')->name('table.daftartujuan');
 

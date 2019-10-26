@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InteractionsExport;
 use Illuminate\Http\Request;
 use DataTables;
 use App\interactions;
 use App\pengunjung;
 use Carbon\Carbon;
+use Maatwebsite\Excel;
+use Maatwebsite\Excel\Facades\Excel as MaatwebsiteExcel;
+
 class DaftartamuController extends Controller
 {
     /**
@@ -103,6 +107,11 @@ class DaftartamuController extends Controller
             ->addIndexColumn()
             ->rawColumns(['action'])
             ->make(true);
+}
+
+public function ExportInterction()
+{
+    return MaatwebsiteExcel::download(new InteractionsExport(),'DaftarTamu.xlsx');
 }
 
 }
