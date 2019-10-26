@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DataTables;
 use App\interactions;
 use App\pengunjung;
+use Carbon\Carbon;
 class DaftartamuController extends Controller
 {
     /**
@@ -89,6 +90,7 @@ class DaftartamuController extends Controller
     public function dataTable()
     {
         $model = interactions::query();
+        // ->whereBetween('waktu_masuk',[$datefrom,$dateto]);
         return DataTables::of($model)
             ->addColumn('action', function ($model) {
                 return view('_action', [

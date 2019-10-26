@@ -33,16 +33,16 @@ class HomeController extends Controller
         $mytime = now();
 
 $counts = DB::table('interactions')
-            ->whereTime('waktu_masuk','=',Carbon::today()->toDateString())
+            ->whereDate('waktu_masuk','=',Carbon::today()->toDateString())
            ->count();
 
             $countsIn = DB::table('interactions')
-            ->whereTime('waktu_masuk','=',Carbon::today()->toDateString())
+            ->whereDate('waktu_masuk','=',Carbon::today()->toDateString())
             ->where('waktu_keluar','=',null)
             ->count();
 
             $countsOut = DB::table('interactions')
-            ->whereTime('waktu_keluar','=',Carbon::today()->toDateString())
+            ->whereDate('waktu_keluar','=',Carbon::today()->toDateString())
             ->count();
 
              $countsMiss = DB::table('interactions')

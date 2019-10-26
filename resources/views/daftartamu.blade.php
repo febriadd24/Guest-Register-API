@@ -4,6 +4,15 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Daftar Tamu
+
+                    {{--<label>Date range button:</label>
+                           <div class="input-group">
+                      <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                        <span>September 1, 2019 - September 30, 2019</span>
+                        <i class=""fa fa-caret-down></i>
+                      </button>
+                    </div> --}}
+
                 {{-- <a href="{{ route('daftartamu.create') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create Product"><i class="icon-plus"></i> Create</a> --}}
             </h3>
         </div>
