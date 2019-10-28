@@ -13,7 +13,7 @@
                       </button>
                     </div> --}}
 
-                <a href="{{ route('daftartamu.ExportInterction') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Export Excel"><i class="icon-plus"></i> Export Excel</a>
+                <a href="{{ route('daftartamu.ExportInterction') }}" class="btn btn-success pull-right" style="margin-top: -8px;" title="Export Excel"><i class="icon-plus"></i> Export Excel</a>
             </h3>
         </div>
         <div class="panel-body">
