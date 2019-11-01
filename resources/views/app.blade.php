@@ -15,6 +15,10 @@
   <link href="{{ asset('assets/vendor/datatables/datatables.min.css') }}" rel="stylesheet">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../assets/AdmiLte/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../assets/AdmiLte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../assets/AdmiLte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../assets/AdmiLte/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -469,6 +473,11 @@
 <script src="../../assets/AdmiLte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../assets/AdmiLte/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- date-range-picker -->
+<script src="../../assets/AdmiLte/bower_components/moment/min/moment.min.js"></script>
+<script src="../../assets/AdmiLte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="../../assets/AdmiLte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../assets/AdmiLte/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -487,6 +496,30 @@
 <script src="{{ asset('js/app.js') }}"></script>
 
 <script>
+
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
