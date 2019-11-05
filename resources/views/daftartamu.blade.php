@@ -18,6 +18,7 @@
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Foto</th>
                     <th>Title</th>
                     <th>NIK</th>
                     <th>Nama</th>
@@ -35,6 +36,7 @@
                 <tfoot>
                 <tr>
                     <th>Id</th>
+                    <th>Foto</th>
                     <th>Title</th>
                     <th>NIK</th>
                     <th>Nama</th>
@@ -60,6 +62,8 @@
             ajax: "{{ route('table.daftartamu') }}",
             columns: [
                 {data: 'id', name: 'id'},
+                {data: 'data_pengunjung.Foto', name: 'Foto',render:function(data, type,row)
+                                         { return '<img src="' + row.Foto + '">'; }},
                 {data: 'title', name: 'title'},
                 {data: 'NIK', name: 'NIK'},
                 {data: 'Nama', name: 'Nama'},

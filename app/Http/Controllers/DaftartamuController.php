@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\InteractionsExport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use DataTables;
 use App\interactions;
 use App\pengunjung;
@@ -93,7 +94,7 @@ class DaftartamuController extends Controller
     }
     public function dataTable()
     {
-        $model = interactions::query();
+        $model = interactions::with('DataPengunjung')->get();
         // ->whereBetween('waktu_masuk',[$datefrom,$dateto]);
         return DataTables::of($model)
             ->addColumn('action', function ($model) {
