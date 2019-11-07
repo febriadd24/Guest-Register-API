@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\InteractionsExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use DataTables;
 use App\interactions;
 use App\pengunjung;
@@ -97,6 +98,8 @@ class DaftartamuController extends Controller
         $model = interactions::with('DataPengunjung')->get();
         // ->whereBetween('waktu_masuk',[$datefrom,$dateto]);
         return DataTables::of($model)
+        ->addColumn('Foto', function ($model) {
+            return '<img src=" '.$model->Foto.' "/>';})
             ->addColumn('action', function ($model) {
                 return view('_action', [
                     'model' => $model,
