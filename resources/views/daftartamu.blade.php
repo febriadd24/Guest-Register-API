@@ -13,6 +13,7 @@
           </button>
         </div> --}}
         </div>
+        <form id= search-form>
         <div class="panel-body">
                 <div class="row">
                         <div class="form-group col-md-4">
@@ -26,9 +27,10 @@
                             <input type="date" name="end_date" id="end_date" class="form-control datepicker-autoclose" placeholder="Please select end date"> <div class="help-block"></div></div>
                         </div>
                         <div class="text-left" style="margin-top: 35px;">
-                        <button type="text" id="btnFiterSubmitSearch" class="btn btn-info">Submit</button>
+                        <button type="submit" id="btnFiterSubmitSearch" class="btn btn-info">Submit</button>
                         </div>
                 </div>
+            </form>
             <table id="datatable" class="table table-hover" style="width:100%">
                 <thead>
                 <tr>
@@ -71,16 +73,22 @@
 @push('scripts')
     <script>
 
-        $('#datatable').DataTable({
+var oTable=$('#datatable').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax:   "{{ route('table.daftartamu') }}",
-                    columns: [
+            ajax:{
+            url:"{{route('table.daftartamu')}}",
+            data: function (d) {
+                d.start_date = $('input[name=start_date]').val();
+                d.end_date = $('input[name=end_date]').val();
+            }
+            },
+            columns: [
                 {data: 'id', name: 'id'},
                 {data: 'data_pengunjung.Foto', name: 'Foto',
                 render:function(data, type, full, meta)
-                                        { return '<img src="' + data + '"height=50>'; }},
+                     { return '<img src="' + data + '"height=50>'; }},
                 {data: 'title', name: 'title'},
                 {data: 'NIK', name: 'NIK'},
                 {data: 'Nama', name: 'Nama'},
@@ -89,8 +97,12 @@
                 {data: 'waktu_masuk', name: 'waktu_masuk'},
                 {data: 'waktu_keluar', name: 'waktu_keluar'},
                 {data: 'action', name: 'action'}
-
             ]
-        })
+
+})
+$('#search-form').on('submit', function(e) {
+        oTable.draw();
+        e.preventDefault();
+    });
     </script>
 @endpush

@@ -93,10 +93,36 @@ class DaftartamuController extends Controller
         $model= interactions::findOrFail($id);
         $model->delete();
     }
-    public function dataTable()
+
+//     public function dataTable(Request $request)
+//     {
+//         $model = interactions::with('DataPengunjung')->get();
+//         // ->whereBetween('waktu_masuk',[$datefrom,$dateto]);
+//         return DataTables::of($model)
+//         ->addColumn('Foto', function ($model) {
+//             return '<img src=" '.$model->Foto.' "/>';})
+//             ->addColumn('action', function ($model) {
+//                 return view('_action', [
+//                     'model' => $model,
+//                     'url_show' => route('daftartamu.show', $model->NIK),
+//                     'url_edit' => route('daftartamu.edit', $model->id),
+//                     'url_destroy' => route('daftartamu.destroy', $model->id)
+//                 ]);
+//             })
+//             ->addIndexColumn()
+//             ->rawColumns(['action'])
+//             ->make(true);
+// }
+
+    public function dataTable(Request $request)
     {
-        $model = interactions::with('DataPengunjung')->get();
-        // ->whereBetween('waktu_masuk',[$datefrom,$dateto]);
+            $from=$request->get('start_date');
+            $todate=$request->get('end_date');
+
+        $model = interactions::with('DataPengunjung')
+        ->whereDate('waktu_masuk','>=',$from)
+        ->whereDate('waktu_masuk','<=',$todate)
+        ->get();
         return DataTables::of($model)
         ->addColumn('Foto', function ($model) {
             return '<img src=" '.$model->Foto.' "/>';})
