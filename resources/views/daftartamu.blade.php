@@ -19,12 +19,12 @@
                         <div class="form-group col-md-4">
                         <h5>Start Date <span class="text-danger"></span></h5>
                         <div class="controls">
-                            <input type="date" name="start_date" id="start_date" class="form-control datepicker-autoclose" placeholder="Please select start date"> <div class="help-block"></div></div>
+                            <input type="date" name="start_date" id="start_date" class="form-control datepicker-autoclose" placeholder="01/01/2018"> <div class="help-block"></div></div>
                         </div>
                         <div class="form-group col-md-4">
                         <h5>End Date <span class="text-danger"></span></h5>
                         <div class="controls">
-                            <input type="date" name="end_date" id="end_date" class="form-control datepicker-autoclose" placeholder="Please select end date"> <div class="help-block"></div></div>
+                            <input type="date" name="end_date" id="end_date" class="form-control datepicker-autoclose" placeholder="01/01/2018"> <div class="help-block"></div></div>
                         </div>
                         <div class="text-left" style="margin-top: 35px;">
                         <button type="submit" id="btnFiterSubmitSearch" class="btn btn-info">Submit</button>

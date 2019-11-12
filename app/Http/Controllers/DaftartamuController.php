@@ -118,11 +118,16 @@ class DaftartamuController extends Controller
     {
             $from=$request->get('start_date');
             $todate=$request->get('end_date');
-
+if (is_null($from) or is_null($todate))
+{
+    $model = interactions::with('DataPengunjung')->get();
+} else
+{
         $model = interactions::with('DataPengunjung')
         ->whereDate('waktu_masuk','>=',$from)
         ->whereDate('waktu_masuk','<=',$todate)
         ->get();
+}
         return DataTables::of($model)
         ->addColumn('Foto', function ($model) {
             return '<img src=" '.$model->Foto.' "/>';})
