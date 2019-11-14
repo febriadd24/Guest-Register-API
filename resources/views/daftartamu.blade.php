@@ -17,16 +17,16 @@
         <div class="panel-body">
                 <div class="row">
                         <div class="form-group col-md-4">
-                        <h5>Start Date <span class="text-danger"></span></h5>
+                        <label>Start Date <span class="text-danger"></span></label>
                         <div class="controls">
                             <input type="date" name="start_date" id="start_date" class="form-control datepicker-autoclose" placeholder="01/01/2018"> <div class="help-block"></div></div>
                         </div>
                         <div class="form-group col-md-4">
-                        <h5>End Date <span class="text-danger"></span></h5>
+                        <label>End Date <span class="text-danger"></span></label>
                         <div class="controls">
                             <input type="date" name="end_date" id="end_date" class="form-control datepicker-autoclose" placeholder="01/01/2018"> <div class="help-block"></div></div>
                         </div>
-                        <div class="text-left" style="margin-top: 35px;">
+                        <div class="text-left" style="margin-top: 25px;">
                         <button type="submit" id="btnFiterSubmitSearch" class="btn btn-info">Submit</button>
                         </div>
                 </div>

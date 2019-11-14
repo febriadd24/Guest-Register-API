@@ -74,9 +74,10 @@ class PengunjungController extends Controller
 
             'Kota'=>'required',
             'Kewarganegaraan'=>'required',
-             'Foto'=>'required',
-            //  'TandaTangan'=>'required',
-            //  'FingerPrint'=>'required',
+
+             'FileFoto' => 'required|image|max:2048',
+             'FileTTD' => 'required|image|max:2048',
+             'FileFP' => 'required|image|max:2048',
         ]);
 
 $NIK=$request->input('NIK');
@@ -97,14 +98,12 @@ $Pekerjaan=$request->input('Pekerjaan');
 $Provinsi=$request->input('Provinsi');
 $Kota=$request->input('Kota');
 $Kewarganegaraan=$request->input('Kewarganegaraan');
-$Foto = $request->Foto;  // your base64 encoded
-$Foto = str_replace('data:image/png;base64,', '', $Foto);
-$Foto = str_replace(' ', '+', $Foto);
-$FotoName = $NIK.'.'.'png';
-Storage::put('/foto/' . $FotoName, base64_decode($Foto));
-$Foto=$request->input('Foto');
-$TandaTangan=$request->input('TandaTangan');
-$FingerPrint=$request->input('FingerPrint');
+$FileFoto = $request->file('FileFoto')->storeAs('public/Foto', $NIK.'.bmp');
+$FileTandaTangan=$request->file('FileTTD')->storeAs('public/TTD', $NIK.'.bmp');
+$FileFingerPrint=$request->file('FileFP')->storeAs('public/FP', $NIK.'.bmp');
+$Foto = $request='storage/Foto/'.$NIK.'.bmp';
+$TandaTangan='storage/TTD/'.$NIK.'.bmp';
+$FingerPrint=$request='storage/FP/'.$NIK.'.bmp';
 
 $pengunjungs=auth()->user()->pengunjung;
 $pengunjungs =new pengunjung([
@@ -125,9 +124,12 @@ $pengunjungs =new pengunjung([
      'Provinsi'=>$Provinsi,
      'Kota'=>$Kota,
      'Kewarganegaraan'=>$Kewarganegaraan,
-     'Foto'=>Storage::url('app/foto/'.$FotoName),
+     'Foto'=>$Foto,
      'TandaTangan'=>$TandaTangan,
-     'FingerPrint'=>$FingerPrint
+     'FingerPrint'=>$FingerPrint,
+     $FileFoto,
+     $FileTandaTangan,
+     $FileFingerPrint,
 
 ]);
 if ($pengunjungs ->save()){
