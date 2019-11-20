@@ -10,6 +10,7 @@ use DataTables;
 use App\interactions;
 use App\pengunjung;
 use Carbon\Carbon;
+use Carbon\Traits\Week;
 use Maatwebsite\Excel;
 use Maatwebsite\Excel\Facades\Excel as MaatwebsiteExcel;
 
