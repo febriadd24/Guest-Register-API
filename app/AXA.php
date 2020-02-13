@@ -8,7 +8,7 @@ class AXA extends Model
 {
     //
     protected $fillable = [
-        'id','AGAMA',
+        'AGAMA',
             'ALAMAT',
             'COUNT_DATA',
             'JENIS_KLMIN',

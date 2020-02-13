@@ -45,15 +45,16 @@ class AXAController extends Controller
      * @param  \App\AXA  $aXA
      * @return \Illuminate\Http\Response
      */
-    public function show(AXA $aXA)
+    public function show($id)
     {
 
-        $pengunjungs = AXA::where('NIK', '=', $aXA)->firstOrFail();
+        $pengunjungs = AXA::where('NIK', '=', $id)->firstOrFail();
         $pengunjungs->view_pengunjungs;
 
         $response =[
-            'Data'=> $pengunjungs
+            'GetDataResult'=> $pengunjungs
         ];
+        return response()->json($response,200);
     }
 
     /**
