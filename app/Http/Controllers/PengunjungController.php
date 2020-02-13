@@ -75,9 +75,9 @@ class PengunjungController extends Controller
             'Kota'=>'required',
             'Kewarganegaraan'=>'required',
 
-             'FileFoto' => 'required|image|max:2048',
-             'FileTTD' => 'required|image|max:2048',
-             'FileFP' => 'required|image|max:2048',
+             'FileFoto' => 'required|max:2048',
+             'FileTTD' => 'required|max:2048',
+             'FileFP' => 'required|max:2048',
         ]);
 
 $NIK=$request->input('NIK');
@@ -164,7 +164,7 @@ return response() ->json($response,400);
         $pengunjungs = pengunjung::where('NIK', '=', $id)->firstOrFail();
         $pengunjungs->view_pengunjungs = [
         'href'=>'api/v1/pengunjung/'.$pengunjungs->id,
-    'method'=>'GET'
+        'method'=>'GET'
         ];
 
         $response =[
