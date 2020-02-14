@@ -30,11 +30,11 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body>
-<div class="container" align="center">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+<body class="hold-transition login-page">
+    <div class="login-box" align="center">
+        <div class="row justify-content-center">
+            <div class="login-box">
+                <div class="login-box-body">
                 <h1 align="center">Login Form</h1>
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -43,7 +43,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>

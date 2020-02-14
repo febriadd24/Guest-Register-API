@@ -26,6 +26,20 @@
                         <div class="controls">
                             <input type="date" name="end_date" id="end_date" class="form-control datepicker-autoclose" placeholder="01/01/2018"> <div class="help-block"></div></div>
                         </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Department<span class="text-danger"></span></label>
+                            <div class="controls">
+                                    <select id="Department" name="Department" class="form-control">
+                                            <option value="All">All</option>
+                                    @foreach($Dept as $deptn)
+                                    <option value="{{ $deptn }}">{{ $deptn}}</option>
+                                    @endforeach
+                                    </select>
+            {{-- {!!Form::select('User_id',$username,null,['name'=>'User_id','Select'])!!} --}}
+                            </div>
+
+            </div>
                         <div class="text-left" style="margin-top: 25px;">
                         <button type="submit" id="btnFiterSubmitSearch" class="btn btn-info">Submit</button>
                         </div>
@@ -82,6 +96,7 @@ var oTable=$('#datatable').DataTable({
             data: function (d) {
                 d.start_date = $('input[name=start_date]').val();
                 d.end_date = $('input[name=end_date]').val();
+                d.Department = $('select[name=Department]').val();
             }
             },
             columns: [

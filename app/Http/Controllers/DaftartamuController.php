@@ -6,9 +6,10 @@ use App\Exports\InteractionsExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use App\interactions;
 use App\pengunjung;
+use App\tujuan;
 use Carbon\Carbon;
 use Carbon\Traits\Week;
 use Maatwebsite\Excel;
@@ -23,7 +24,8 @@ class DaftartamuController extends Controller
      */
     public function index()
     {
-        return view('daftartamu');
+        $Dept = tujuan::pluck('Department');
+        return view('daftartamu',compact('Dept'));
     }
 
     /**
@@ -115,14 +117,29 @@ class DaftartamuController extends Controller
 //             ->make(true);
 // }
 
+
+public function GetBagian(Request $request){
+    $userID = tujuan::all('Bagian')
+    ->where('Department','=',$request->get('Department'));
+    return view('layouts.pages.report.adminindex',compact('userID'));
+}
     public function dataTable(Request $request)
     {
             $from=$request->get('start_date');
             $todate=$request->get('end_date');
+            $Department=$request->get('Department');
 if (is_null($from) or is_null($todate))
 {
     $model = interactions::with('DataPengunjung')->get();
-} else
+}
+elseif($Department != 'All' )
+{
+    $model = interactions::with('DataPengunjung')
+    ->where('tujuan','like',$Department)
+    ->get();
+
+}
+else
 {
         $model = interactions::with('DataPengunjung')
         ->whereDate('waktu_masuk','>=',$from)
