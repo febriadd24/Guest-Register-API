@@ -256,7 +256,7 @@
           </ul>
         </li>--}}
         <li>
-        <a href="{{route('daftartamu.index')}}"
+        <a href="{{route('daftartamu.index')}}">
             <i class="fa fa-th"></i> <span>Daftar Tamu</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">!!</small>
@@ -272,7 +272,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="{{route('Demografi.index')}}"><i class="fa fa-circle-o"></i> Demografi Tamu</a></li>
             <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
             <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
             <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
@@ -478,6 +478,8 @@
 <script src="../../assets/AdmiLte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="../../assets/AdmiLte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- ChartJS -->
+<script src="../../assets/AdmiLte/bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE App -->
 <script src="../../assets/AdmiLte/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -485,6 +487,7 @@
 <script src="../assets/AdmiLte/js/dropdown.js"></script>
 {{-- <script src="../../assets/AdmiLte/js/dropdown.js"></script> --}}
 {{-- <script src="{{ asset('assets/vendor/datatables/datatables.min.js') }}"></script> --}}
+
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 {{-- <script type="text/javascript" src="{{ URL::asset('js/dropdown.js') }}"></script> --}}
 <!-- Sweetalert2 -->
@@ -523,6 +526,7 @@
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
+
 </script>
 @stack('scripts')
 </body>
