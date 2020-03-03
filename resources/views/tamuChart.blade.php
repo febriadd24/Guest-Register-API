@@ -9,11 +9,6 @@
     <div id="container">
     </div>
 </div>
-
- {{-- @foreach ( $dates as $date => $count )
-    {{ $date }} is {{ $count }}
-@endforeach --}}
-
         {!! $tamuChart->script() !!}
 
 @endsection
