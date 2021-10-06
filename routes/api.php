@@ -25,6 +25,9 @@ Route::group(['prefix' => 'v1'], function() {
             Route::resource('AXA', 'AXAController', [
                 'except' => ['index','create', 'edit']
                 ]);
+                Route::resource('BANKDIY', 'BANKDIYController', [
+                    'except' => ['update','create', 'edit']
+                    ]);
             Route::group(['middleware' => 'auth:api'], function(){
             Route::post('details', 'UserController@details');
             Route::resource('pengunjung', 'PengunjungController', [
