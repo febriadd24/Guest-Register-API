@@ -15,7 +15,9 @@
         "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.5",
+        "lcobucci/jwt": "3.3.3",
         "maatwebsite/excel": "^3.1",
+        "symfony/translation": "4.3.8",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

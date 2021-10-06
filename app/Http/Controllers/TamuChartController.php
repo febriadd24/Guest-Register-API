@@ -52,18 +52,29 @@ class TamuChartController extends Controller
     //         return view('TamuChart', [ 'tamuChart' => $tamuChart ] );
     // }
 
-    public function index()
+    public function index(Request $request)
     {
-        $awal=Carbon::create('2019-05-1');
+        $awal=$request->get('start_date');
+        $akhir=$request->get('end_date');
+        if (is_null($awal) or is_null($akhir))
+{
         $record = interactions::select(DB::raw("COUNT(*) as count"),
         DB::raw("DAY(waktu_masuk) as day"))
-        ->whereDate('waktu_masuk', '>=', $awal)
+        // ->whereDate('waktu_masuk', '>=', $awal)
         ->groupBy('day')
         ->orderBy('day')
         ->get();
-
+}
+else{
+    $record = interactions::select(DB::raw("COUNT(*) as count"),
+    DB::raw("DAY(waktu_masuk) as day"))
+    ->whereDate('waktu_masuk', '>=', $awal)
+    ->whereDate('waktu_masuk', '<=', $akhir)
+    ->groupBy('day')
+    ->orderBy('day')
+    ->get();
+}
          $data = [];
-
          foreach($record as $row) {
             $data['label'][] = $row->day;
             $data['data'][] = (int) $row->count;
